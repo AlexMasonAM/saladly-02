@@ -11,7 +11,8 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to ingredients_path
     else
-      flash.now[:error] = "You failed (at logging in...not life)!"
+      flash.now[:danger] = "You failed (at logging in...not life)!"
+      render :new
     end
   end
 

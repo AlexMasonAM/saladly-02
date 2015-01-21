@@ -21,7 +21,7 @@ class IngredientsController < ApplicationController
       flash[:info] = "You successfully added an ingredient"      
       redirect_to ingredients_path
     else
-      flash.now[:error] = @ingredient.errors.full_messages.to_sentence
+      flash.now[:danger] = @ingredient.errors.full_messages.to_sentence
       render :new
     end
   end

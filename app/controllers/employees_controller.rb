@@ -18,8 +18,10 @@ class EmployeesController < ApplicationController
     @employee = Employee.new(employee_params)
 
     if @employee.save
+      flash[:info] = "You successfully added an employee"
       redirect_to employees_path
     else
+      flash.now[:danger] = @employee.errors.full_messages.to_sentence
       render :new
     end
   end
