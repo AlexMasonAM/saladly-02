@@ -6,11 +6,12 @@ class SessionsController < ApplicationController
   def create # the act of logging in
     user = User.find_by(email: params[:user][:email])
 
-    if user && user.authenticate(params[:user][:password])
+    if user && user.authenticate(params[:user][:password]) #user exists and has been authenticated
+      flash[:info] = "You logged in succesfully!"
       session[:user_id] = user.id
       redirect_to ingredients_path
     else
-      render :new
+      flash.now[:error] = "You failed (at logging in...not life)!"
     end
   end
 

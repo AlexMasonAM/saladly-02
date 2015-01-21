@@ -22,6 +22,10 @@
     <h3><%= link_to 'Ingredients', ingredients_path %> | <%= link_to 'Employees', employees_path %></h3>
   </div>
 
+  <% flash.each do |key, value| %>
+    <br><% key %><%= value %>:</br>
+  <% end %>
+ 
   <%= yield %>
 </div>
 </body>
